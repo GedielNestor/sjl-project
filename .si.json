@@ -1,0 +1,10 @@
+{
+  "plugin": "org.smartide.plugin.editor",
+  "run": "echo 'Error in .si.json file\n/storage/emulated/0/Documents/sites/sjl/.si.json: open failed: ENOENT (No such file or directory)'",
+  "intelligence": {
+    ".css": {
+      "enabled": false,
+      "run": "vscode-css-language-server --stdio"
+    }
+  }
+}

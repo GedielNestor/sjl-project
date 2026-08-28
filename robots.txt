@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /.vercel/
+Sitemap: https://sjl-caixilharia.vercel.app/sitemap.xml
