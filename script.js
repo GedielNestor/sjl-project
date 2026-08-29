@@ -14,7 +14,7 @@
       label: 'Portas & Janelas',
       icon: 'fa-door-open',
       folder: 'img/portas-janelas',
-      files: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp', '8.webp', '9.webp', '10.webp'],
+      count: 10,
       caption: 'Porta e janela de alumínio com perfil decorativo'
     },
     {
@@ -22,7 +22,7 @@
       label: 'Guarda-Corpos',
       icon: 'fa-arrow-up-right-dots',
       folder: 'img/guarda-corpos',
-      files: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp', '8.webp', '9.webp', '10.webp', '11.webp', '12.webp', '13.webp', '14.webp', '15.webp'],
+      count: 18,
       caption: 'Guarda-corpo em vidro temperado'
     },
     {
@@ -30,7 +30,7 @@
       label: 'Corrimãos',
       icon: 'fa-stairs',
       folder: 'img/corrimaos',
-      files:  ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp', '8.webp', '9.webp', '10.webp', '11.webp', '12.webp', '13.webp', '14.webp', '15.webp', '16.webp'],
+      count: 23,
       caption: 'Corrimão em vidro temperado / inox'
     },
     {
@@ -38,7 +38,7 @@
       label: 'Boxes de Banho',
       icon: 'fa-shower',
       folder: 'img/boxes-banho',
-      files: ['1.webp', '2.webp', '3.webp', '4.webp'],
+      count: 8,
       caption: 'Box de banho em vidro temperado'
     },
     {
@@ -46,10 +46,23 @@
       label: 'Equipa em Obra',
       icon: 'fa-people-group',
       folder: 'img/equipa',
-      files: ['1.webp', '2.webp'],
+      count: 2,
       caption: 'Equipa SJL em trabalho de instalação'
     }
   ];
+
+  // Gera automaticamente os nomes de ficheiro (1.webp, 2.webp, ...) a partir
+  // do "count" de cada categoria. Se uma categoria tiver nomes de ficheiro
+  // fora do padrão, pode continuar a usar "files: [...]" manualmente — este
+  // gerador só entra em ação quando "files" não está definido.
+  const GALLERY_DEFAULT_EXT = 'webp';
+  GALLERY_DATA.forEach(cat => {
+    if (!cat.files) {
+      const n = cat.count || 0;
+      // Ordem decrescente: a imagem mais recente (número mais alto) aparece primeiro
+      cat.files = Array.from({ length: n }, (_, i) => `${n - i}.${cat.ext || GALLERY_DEFAULT_EXT}`);
+    }
+  });
 
   /* -------------------- Header scroll state -------------------- */
   const header = document.getElementById('header');
